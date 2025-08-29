@@ -14,13 +14,6 @@
 /// 	> Pointers can be "dereferenced" with the * operator,
 ///       which looks up the bits in memory at the pointer's addresss
 ///       and interprets it as the pointer's type
-///
-/// Stack - automatically allocated memory that "grows down"
-///
-///	addr:	content:
-/// 	0x100 | first byte  | <- top of stack
-/// 	0x0fc | second byte |
-/// 	0x0f8 | etc...	    |
 
 int main(){
 	int a = 0xA; //0b1010
@@ -29,6 +22,8 @@ int main(){
 	
 	int* pa = &a; // pointer to integer A, stores a memory address
 	int* pb = &b;
+
+    lineprint((uint64_t*)&b - (uint64_t*)&a); //????
 
 	printf("address a (int) = %llx, \naddress b (int) = %llx, \naddress (long long <int>) c = %llx\n", &a, &b, &c);
 
@@ -39,7 +34,7 @@ int main(){
 	// Note that pointers are just numbers, and can be cast to normal integer types
 	// "casting" tells the compiler to interpret one type as a different one
 	// and is done with the (type) operator
-	unsigned long long addrA = (uint64_t)&a;
+	unsigned long long addrA = (uint64_t)&a; // 
 	unsigned long long addrB = (uint64_t)&b;
 	unsigned long long addrC = (uint64_t)&c;
 
